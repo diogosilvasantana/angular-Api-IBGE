@@ -1,10 +1,12 @@
 <div class="container text-center">
 
   <!-- TÍTULO -->
-    <h1>{{title | uppercase}}</h1>
+  <h1>{{title | uppercase}}</h1>
 
   <!-- LISTA DE ESTADOS -->
   <div class="row">
-    <div class="col-md-3 text-left" *ngFor="let i of listaEstados"><fa-icon [icon]="faStar"></fa-icon><span>{{i.nome | uppercase}}</span></div>
+    <div class="col-md-3 text-left" *ngFor="let i of listaEstados">
+      <fa-icon [icon]="faStar"></fa-icon><span>{{i.nome | uppercase}}</span>
+    </div>
   </div>
 </div>
