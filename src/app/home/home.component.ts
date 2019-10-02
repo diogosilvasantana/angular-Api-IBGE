@@ -10,12 +10,14 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.scss']
 })  
 export class HomeComponent implements OnInit {
+  public title: string;
   public faStar = faStar;
   public listaEstados: Estados[]; 
 
   constructor(private api: HomeService) { }
 
   ngOnInit() {
+    this.title = 'This is my country';
     this.buscarEstados();
   }
 
@@ -23,7 +25,6 @@ export class HomeComponent implements OnInit {
     this.api.getEstados()
     .subscribe(res => {
       this.listaEstados = res;
-      console.log(this.listaEstados)
     })
   }
 }
