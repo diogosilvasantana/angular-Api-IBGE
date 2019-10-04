@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Estados } from '../models/estados';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 const apiUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
 
@@ -14,17 +14,16 @@ const apiUrl = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
 })
 export class HomeService {
 
-  constructor(private http: HttpClient) { } 
-  
-  getEstados (): Observable<Estados[]>{
+  constructor(private http: HttpClient) { }
+
+  getEstados(): Observable<Estados[]> {
     return this.http.get<Estados[]>(apiUrl)
-    .pipe(
-      tap(estados => console.log('Leu os estados')),
-      catchError(this.handleError('getEstados', []))
-    )
+      .pipe(
+        catchError(this.handleError('getEstados', []))
+      )
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);
